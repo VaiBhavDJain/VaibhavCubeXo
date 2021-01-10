@@ -1,0 +1,32 @@
+{%extends 'basic.html' %}
+{% block body %}
+<div class="container mt-5">
+		{% for i in allData%}
+		<h1>Available Balance-{{i.balance}}</h1>
+		{% endfor %}
+
+		<form  action="/amount_credit_debit/"  method="post">{% csrf_token %}
+			<div class="row">
+				<div class="col-3">
+					<label><h4>Credit/Debit Amount</h4></label>
+				</div>
+				<div class="col-3">
+					<input type="placeholder" class="form-control"required name='amount'>
+				</div>
+				<div class="col-3">
+				<select name="credit-debit" class="form-control">
+  					<option value="Credit">Credit</option>
+  					<option value="Debit">Debit</option>
+				</select>
+				</div>
+				<div class="col-3">
+					<input type="Submit" name="Submit" class="btn btn-secondary">
+				</div>
+			</div>
+
+		</form>
+		      <a  class="text-center m-2" href="/transHistory/">Transaction History</a>
+
+	
+</div>
+{% endblock %}
